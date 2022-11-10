@@ -5,3 +5,6 @@ import matplotlib.pyplot as plt
 x = np.random.rand(10)
 print(x)
 
+# unnecessary edit
+
+plt.plot(x)
