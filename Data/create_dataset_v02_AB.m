@@ -95,5 +95,5 @@ X = X + inf2;
 %% normalize signals to a max amplitude of 1 
 X = X./max(abs(X)); 
 
-%% Save data
-
+%% Save data for importing
+save
