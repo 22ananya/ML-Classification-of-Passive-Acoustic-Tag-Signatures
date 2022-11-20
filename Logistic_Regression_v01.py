@@ -30,6 +30,21 @@ from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, random_state=0, shuffle=True)
 print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
+# Standardize data - Zero mean and Unit Variance - plot an example again to verify
+from sklearn import preprocessing
+scaler = preprocessing.StandardScaler().fit(x_train)
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test)
+
+# Plot random data sample to ensure it is correctly rescaled 
+fig2, ax = plt.subplots()
+ax.plot(X[np.random.randint(n),:])
+ax.set_xlabel('Samples')
+ax.set_ylabel('Amplitude')
+ax.set_title('Scaled Example')
+
+
+
 # load classifier and fit data
 from sklearn.linear_model import LogisticRegression
 lgr = LogisticRegression() # shorter function name
