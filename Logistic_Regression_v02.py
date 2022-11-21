@@ -53,15 +53,15 @@ from sklearn.model_selection import StratifiedKFold
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=np.random.randint(n))
 lst_accu_stratified = []
 
-for train_index, test_index in skf.split(x_train, y_train):
-    x_train_fold, x_test_fold = x_train[train_index], x_train[test_index]
-    y_train_fold, y_test_fold = y_train[train_index], y_train[test_index]
-    lgr.fit(x_train_fold, y_train_fold)
-    lst_accu_stratified.append(lgr.score(x_test_fold, y_test_fold))
+# for train_index, test_index in skf.split(x_train, y_train):
+#     x_train_fold, x_test_fold = x_train[train_index], x_train[test_index]
+#     y_train_fold, y_test_fold = y_train[train_index], y_train[test_index]
+#     lgr.fit(x_train_fold, y_train_fold)
+#     lst_accu_stratified.append(lgr.score(x_test_fold, y_test_fold))
 
 
-# Print list of training accuracy achieved
-print(lst_accu_stratified)
+# # Print list of training accuracy achieved
+# print(lst_accu_stratified)
 
 
                         ## Only Test on Hold Out Set when satisfied with CV results. Don't "train" using repeated test set evaluations!
@@ -73,3 +73,8 @@ predictions = lgr.predict(x_test)
 from sklearn.metrics import accuracy_score
 score = accuracy_score(predictions, y_test)
 print(score)
+
+# PLotting Confusion Matrix
+from sklearn.metrics import ConfusionMatrixDisplay
+ConfusionMatrixDisplay.from_predictions(y_test, predictions)
+plt.show()
