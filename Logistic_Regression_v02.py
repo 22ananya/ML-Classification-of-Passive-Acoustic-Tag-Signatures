@@ -63,6 +63,8 @@ for train_index, test_index in skf.split(x_train, y_train):
 # Print list of training accuracy achieved
 print(lst_accu_stratified)
 
+
+                        ## Only Test on Hold Out Set when satisfied with CV results. Don't "train" using repeated test set evaluations!
 # Predict labels
 lgr.fit(x_train, y_train) # train again on complete training set before testing on hold out set
 predictions = lgr.predict(x_test)
