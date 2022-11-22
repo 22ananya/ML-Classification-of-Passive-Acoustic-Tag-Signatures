@@ -56,7 +56,7 @@ RL = [4 2 0];
 NL = [2, sqrt(2), 1, (1/sqrt(2)), 1/2]; % noise amplitude vector
 
 % To create a duplicate dataset with much better SNR if needed
-NL = NL./2;
+NL = NL./1;
     
 X = repmat(X,1,50);
 Y = repmat(Y,1,50); 
@@ -96,4 +96,4 @@ X = X + inf2;
 X = X./max(abs(X)); 
 
 %% Save data for importing
-save('Dataset_v02.mat', 'X', 'Y')
+save('Dataset_v03.mat', 'X', 'Y')
