@@ -8,7 +8,7 @@ from scipy.io import loadmat
 
 
                         ## Data Load Function
-file = 'Data\Dataset_v01.mat' # File name of Data File to be loaded
+file = 'Data\Dataset_v02.mat' # File name of Data File to be loaded
 def load_data(filename):
     data = loadmat(filename)
     return data
