@@ -5,8 +5,8 @@ import numpy as np
 import scipy
 import matplotlib.pyplot as plt
 from scipy.io import loadmat
+import itertools
 
-# test link s 
                         ## Data Load Function
 file = 'Data\Dataset_v02.mat' # File name of Data File to be loaded
 def load_data(filename):
@@ -76,7 +76,31 @@ print(score)
 
 # PLotting Confusion Matrix
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-cm = confusion_matrix(y_test, predictions)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm)
-disp.plot()
+cm = confusion_matrix(y_test, predictions, normalize='true', )
+# disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+# disp.plot()
+# plt.show()
+
+def plot_confusion_matrix(cm, title='Confusion matrix'):
+    plt.imshow(cm, interpolation='nearest')
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(cm.shape[1])
+    plt.xticks(tick_marks)
+    ax = plt.gca()
+    ax.set_xticklabels((ax.get_xticks() +1).astype(str))
+    plt.yticks(tick_marks)
+
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, format(cm[i, j], '.2f'),
+                 horizontalalignment="center",
+                 color="white")
+
+    #plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+
+fig, ax = plt.subplots()
+plot_confusion_matrix(cm)
 plt.show()
